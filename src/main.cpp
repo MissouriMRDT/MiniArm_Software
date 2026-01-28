@@ -1,13 +1,5 @@
 #include <Arduino.h>
 
-<<<<<<< Updated upstream
-void setup() {
-    // put your setup code here, to run once:
-}
-
-void loop() {
-    // put your main code here, to run repeatedly:
-=======
 void setup() { Joystick.begin(); }
 
 unsigned int floatToJoystick(float j) {
@@ -27,5 +19,4 @@ void loop() {
     Joystick.Zrotate(floatToJoystick(j4));
     Joystick.slider(floatToJoystick(pitch));
     delay(50);
->>>>>>> Stashed changes
 }
