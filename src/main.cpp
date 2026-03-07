@@ -12,17 +12,19 @@ void setup() {
 }
 
 void loop() {
-    int enable = digitalRead(20);
+    Joystick.button(1, digitalRead(20));
     // Read Encoder Values
+    int x = 0;
     int j2 = analogRead(27);
-    int j3 = 0.0;
-    int j4 = 0.0;
-    int pitch = 0.0;
+    int j3 = analogRead(26);
+    int j4 = analogRead(25);
+    int j5 = analogRead(24);
 
     // Joystick Values Sent to Basestation
-    Joystick.X(enable * 1024);
+    Joystick.button(2, millis() % 1000 < 500); // Toggle a button every second so the browser detects it.
+    Joystick.X(0);
     Joystick.Y(j2);
     Joystick.Z(j3);
     Joystick.Zrotate(j4);
-    Joystick.slider(pitch);
+    Joystick.slider(j5);
 }
