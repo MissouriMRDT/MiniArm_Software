@@ -11,27 +11,18 @@ void setup() {
     pinMode(27, INPUT); // J2
 }
 
-float floatToJoystick(float encoderNum) {
-    float joystickNum = (encoderNum - 512) / 512;
-    return joystickNum;
-}
-
 void loop() {
     int enable = digitalRead(20);
-    if (enable > 0) {
+    // Read Encoder Values
+    int j2 = analogRead(27);
+    int j3 = 0.0;
+    int j4 = 0.0;
+    int pitch = 0.0;
 
-        // Read Encoder Values
-        float x = 0.0;
-        float j2 = analogRead(27);
-        float j3 = analogRead(26);
-        float j4 = analogRead(25);
-        float pitch = analogRead(24); 
-
-        // Converted Joystick Values Sent to Basestation
-        Joystick.X(x);
-        Joystick.Y(j2);
-        Joystick.Z(j3);
-        Joystick.Zrotate(j4);
-        Joystick.slider(pitch);
-    }
+    // Joystick Values Sent to Basestation
+    Joystick.X(enable * 1024);
+    Joystick.Y(j2);
+    Joystick.Z(j3);
+    Joystick.Zrotate(j4);
+    Joystick.slider(pitch);
 }
